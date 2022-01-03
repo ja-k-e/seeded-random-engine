@@ -9,7 +9,7 @@ export default class SeededRandomEngine {
     }
   }
 
-  update() {
+  generate() {
     const newGeneration = this.cores.map((core) => core.random());
     while (this.history.length >= this.memory) {
       this.history.shift();
@@ -24,7 +24,7 @@ export default class SeededRandomEngine {
 
   ff(toGeneration) {
     while (this.generation < toGeneration) {
-      this.update();
+      this.generate();
     }
   }
 }
