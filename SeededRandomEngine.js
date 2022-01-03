@@ -1,4 +1,4 @@
-export default class SeededRandomEngine {
+class SeededRandomEngine {
   constructor({ seed, cores = 0, memory = 1 } = {}) {
     this.memory = memory;
     this.generation = 0;
@@ -73,3 +73,5 @@ class Core {
     };
   }
 }
+
+exports.SeededRandomEngine = SeededRandomEngine;
