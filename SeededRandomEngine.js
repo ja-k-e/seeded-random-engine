@@ -10,11 +10,11 @@ export default class SeededRandomEngine {
   }
 
   generate() {
-    const newGeneration = this.cores.map((core) => core.random());
+    const generation = this.cores.map((core) => core.random());
     while (this.history.length >= this.memory) {
       this.history.shift();
     }
-    this.history.push(newGeneration);
+    this.history.push(generation);
     this.generation++;
   }
 
