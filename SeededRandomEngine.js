@@ -22,8 +22,8 @@ export default class SeededRandomEngine {
     return this.history[this.history.length - 1];
   }
 
-  ff(toGeneration) {
-    while (this.generation < toGeneration) {
+  ff(generation = 0) {
+    while (this.generation < generation) {
       this.generate();
     }
   }
