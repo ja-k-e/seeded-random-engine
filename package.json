@@ -1,0 +1,9 @@
+{
+  "name": "seeded-random-engine",
+  "version": "1.0.0",
+  "main": "SeededRandomEngine.js",
+  "repository": "https://github.com/jakealbaugh/seeded-random-engine",
+  "author": "Jake Albaugh <jake.albaugh@gmail.com>",
+  "license": "MIT",
+  "type": "module" 
+}
