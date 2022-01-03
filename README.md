@@ -5,6 +5,8 @@
 ## Example usage
 
 ```js
+import SeededRandomEngine from "seeded-random-engine";
+
 const engine = new SeededRandomEngine({
   // The seed is unique to the instance.
   seed: "A unique case sensitive string",
