@@ -1,6 +1,6 @@
 {
   "name": "seeded-random-engine",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.mjs",
   "repository": "https://github.com/jakealbaugh/seeded-random-engine",
   "author": "Jake Albaugh <jake.albaugh@gmail.com>",
@@ -8,5 +8,6 @@
   "engines": {
     "node": ">=14.17.0"
   },
-  "type": "module"
+  "type": "module",
+  "types": "index.d.ts"
 }

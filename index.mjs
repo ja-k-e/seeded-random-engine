@@ -1,5 +1,5 @@
 export default class SeededRandomEngine {
-  constructor({ seed, cores = 0, memory = 1 } = {}) {
+  constructor({ seed = "", cores = 0, memory = 1 } = {}) {
     this.memory = memory;
     this.generation = 0;
     this.history = [];
@@ -31,9 +31,9 @@ export default class SeededRandomEngine {
 
 // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
 class Core {
-  constructor(seed) {
-    const seedingFunction = this.xmur3(seed);
-    this._random = this.sfc32(
+  constructor(seed = "") {
+    const seedingFunction = this._xmur3(seed);
+    this.random = this._sfc32(
       seedingFunction(),
       seedingFunction(),
       seedingFunction(),
@@ -41,11 +41,7 @@ class Core {
     );
   }
 
-  random() {
-    return this._random();
-  }
-
-  xmur3(str) {
+  _xmur3(str) {
     for (var i = 0, h = 1779033703 ^ str.length; i < str.length; i++)
       (h = Math.imul(h ^ str.charCodeAt(i), 3432918353)),
         (h = (h << 13) | (h >>> 19));
@@ -56,7 +52,7 @@ class Core {
     };
   }
 
-  sfc32(a, b, c, d) {
+  _sfc32(a, b, c, d) {
     return function () {
       a >>>= 0;
       b >>>= 0;
