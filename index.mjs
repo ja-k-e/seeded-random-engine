@@ -1,16 +1,23 @@
 export default class SeededRandomEngine {
   constructor({ seed = "", cores = 0, memory = 1 } = {}) {
-    this.memory = memory;
+    this._cores = cores;
+    this._memory = memory;
+    this._seed = seed;
     this.generation = 0;
     this.history = [];
     this.cores = [];
-    for (let i = 0; i < cores; i++) {
-      this.cores.push(new Core(seed + i));
+    this.resetCores();
+  }
+
+  resetCores() {
+    this.cores.length = 0;
+    for (let i = 0; i < this._cores; i++) {
+      this.cores.push(new Core(this._seed + i));
     }
   }
 
   generate() {
-    while (this.history.length >= this.memory) {
+    while (this.history.length >= this._memory) {
       this.history.shift();
     }
     const generation = this.cores.map((core) => core.random());
@@ -22,7 +29,12 @@ export default class SeededRandomEngine {
     return this.history[this.history.length - 1];
   }
 
-  ff(generation = 0) {
+  to(generation = 0) {
+    if (this.generation > generation) {
+      this.generation = 0;
+      this.history = [];
+      this.resetCores();
+    }
     while (this.generation < generation) {
       this.generate();
     }

@@ -23,8 +23,8 @@ engine.generate();
 console.log(engine.values());
 // eg. [0.3230205841828137, 0.2185600262600928, 0.1377083600964397, 0.9505280032753944]
 
-// Fast forward the engine to generation 57
-engine.ff(57);
+// Change the engine generation to 57
+engine.to(57);
 // Any engine sharing this seed and set to generation 57 will always yield the same values.
 console.log(engine.values());
 // Call engine.generate() to increase the generation and generate numbers.
@@ -40,7 +40,5 @@ Say we want a number of devices to see the same new random number every time a b
 One way we could do this would be to randomly generate a number and update the devices over the network solution using something like web sockets. That solution, while valid, is somewhat overkill if all I need is a synchronized random number generator.
 
 Enter the seeded random engine. The concept is that if devices share a seed, multiple random number generators (RNGs) can be synchronised between the devices.
-
-A seeded RNG can also be "fast forwarded." This means if a new device wants to join others, the others share the seed and the current "generation" (how many times the engine has been used), and the new device can catch up.
 
 The core use case for this engine is one where human beings can do that sync easily together. I can tell my friend "enter seed 'willie' and we are at generation 100." With two small inputs, my friend can sync their device with everyone else and be looking at the exact same randomized data.

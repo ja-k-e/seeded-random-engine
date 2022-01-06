@@ -16,8 +16,7 @@ declare class SeededRandomEngine {
   cores: Core[];
   generation: number;
   history: number[][];
-  memory: number;
-  ff(generation?: number): void;
+  to(generation?: number): void;
   generate(): void;
   values(): number[];
 }
