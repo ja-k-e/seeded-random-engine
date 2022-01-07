@@ -12,7 +12,7 @@ export default class SeededRandomEngine {
   resetCores() {
     this.cores.length = 0;
     for (let i = 0; i < this._cores; i++) {
-      this.cores.push(new Core(this._seed + i));
+      this.cores.push(new SeededRandomEngineCore(this._seed + i));
     }
   }
 
@@ -42,7 +42,7 @@ export default class SeededRandomEngine {
 }
 
 // https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript
-class Core {
+class SeededRandomEngineCore {
   constructor(seed = "") {
     const seedingFunction = this._xmur3(seed);
     this.random = this._sfc32(
